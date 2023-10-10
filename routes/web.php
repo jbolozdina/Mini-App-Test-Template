@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/** Uncomment @php block in welcome.blade.php to have polling */
+Route::get('/polling-web-app', function () {
 //    $telegraph_bot = new DefStudio\Telegraph\Telegraph();
 //
 
@@ -55,6 +56,6 @@ Route::get('/', function () {
     return view('welcome', ['bot' => $bot, 'messageCount' => count($bot->updates())]);
 });
 
-Route::get('/webapp', function () {
+Route::get('/', function () {
     return view('welcome');
 });
