@@ -812,7 +812,7 @@
         </div>
 
         <div class="text-center text-gray-500 dark:text-gray-400 mt-16">
-            Current message count: {{ $messageCount }}
+            Current message count: 0
         </div>
         <div class="text-center text-gray-500 dark:text-gray-400 mt-8">
             Woah.
@@ -828,36 +828,36 @@
 </body>
 </html>
 
-@php
-    /**
-     * @var \DefStudio\Telegraph\Models\TelegraphBot $bot;
-     */
+{{--@php--}}
+{{--    /**--}}
+{{--     * @var \DefStudio\Telegraph\Models\TelegraphBot $bot;--}}
+{{--     */--}}
 
-    $polling = true;
-    $processedUpdateIds = [];
-    while ($polling) {
-        \Laravel\Prompts\info(json_encode($processedUpdateIds));
+{{--    $polling = true;--}}
+{{--    $processedUpdateIds = [];--}}
+{{--    while ($polling) {--}}
+{{--        \Laravel\Prompts\info(json_encode($processedUpdateIds));--}}
 
-        $freshUpdates = $bot->updates()->filter(static fn (\DefStudio\Telegraph\DTO\TelegramUpdate $update) => !in_array($update->id(), $processedUpdateIds));
+{{--        $freshUpdates = $bot->updates()->filter(static fn (\DefStudio\Telegraph\DTO\TelegramUpdate $update) => !in_array($update->id(), $processedUpdateIds));--}}
 
-        $freshUpdates = $freshUpdates->map(static function (\DefStudio\Telegraph\DTO\TelegramUpdate $update) use (&$processedUpdateIds) {
-            $chatId = (int)$update->message()?->chat()->id();
+{{--        $freshUpdates = $freshUpdates->map(static function (\DefStudio\Telegraph\DTO\TelegramUpdate $update) use (&$processedUpdateIds) {--}}
+{{--            $chatId = (int)$update->message()?->chat()->id();--}}
 
-            \Laravel\Prompts\info(json_encode($chatId));
+{{--            \Laravel\Prompts\info(json_encode($chatId));--}}
 
-            /** @var \DefStudio\Telegraph\Models\TelegraphChat $chat */
-            $chat = \DefStudio\Telegraph\Models\TelegraphChat::query()->firstWhere(
-                ['chat_id' => $chatId]
-            );
+{{--            /** @var \DefStudio\Telegraph\Models\TelegraphChat $chat */--}}
+{{--            $chat = \DefStudio\Telegraph\Models\TelegraphChat::query()->firstWhere(--}}
+{{--                ['chat_id' => $chatId]--}}
+{{--            );--}}
 
-            \Laravel\Prompts\info(json_encode($chat->toArray(), JSON_PRETTY_PRINT));
+{{--            \Laravel\Prompts\info(json_encode($chat->toArray(), JSON_PRETTY_PRINT));--}}
 
-            $chat?->message('I got you!')->send();
+{{--            $chat?->message('I got you!')->send();--}}
 
-            return $update;
-        });
+{{--            return $update;--}}
+{{--        });--}}
 
-        $processedUpdateIds = [...$processedUpdateIds, ...$freshUpdates->map(static fn (\DefStudio\Telegraph\DTO\TelegramUpdate $update) => $update->id())->toArray()];
-        usleep(1000 * 1000); // 1000ms
-    }
-@endphp
+{{--        $processedUpdateIds = [...$processedUpdateIds, ...$freshUpdates->map(static fn (\DefStudio\Telegraph\DTO\TelegramUpdate $update) => $update->id())->toArray()];--}}
+{{--        usleep(1000 * 1000); // 1000ms--}}
+{{--    }--}}
+{{--@endphp--}}
