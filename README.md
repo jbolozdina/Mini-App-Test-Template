@@ -18,13 +18,18 @@ MiniApp (example hosted at https://tgbot.click) - displays a static Laravel webp
 1. Clone this repository
 2. `composer install`
 3. `php artisan migrate`
-4. Prepare your HTTP token from @BotFather to use in the next step (as in the Telegram API guide)
+4. Prepare your HTTP API token from [@BotFather](https://t.me/botfather) to use in the next step (as in the [Telegram API guide](https://core.telegram.org/bots/features#creating-a-new-bot))
 5. `php artisan telegraph:new-bot`, set webhooks if you meet Step 3 of prerequisites. If you want webhooks, it has to be run from production, obviously (on a safe domain).
 6. Prepare the private Chat ID where you want the mini app to be working (you have to message the bot first @miniapp_test_bot and then get the ID of that chat).
 7. Get to building your app
 8. Sob uncontrollably
 
+## Bonus
+Poorly written, sometimes commented out, leftover code. Enjoy.
+
 ## Useful documentation
+
+Telegram "From nothing to something" - https://core.telegram.org/bots/tutorial
 
 Laravel - https://laravel.com/docs/10.x
 
