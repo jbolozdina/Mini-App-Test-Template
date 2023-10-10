@@ -54,3 +54,7 @@ Route::get('/', function () {
 
     return view('welcome', ['bot' => $bot, 'messageCount' => count($bot->updates())]);
 });
+
+Route::get('/webapp', function () {
+    return view('welcome');
+});

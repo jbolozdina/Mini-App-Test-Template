@@ -14,7 +14,7 @@ class CustomWebhookHandler extends WebhookHandler
         $this->chat
             ->message("Here's your webapp!")
             ->keyboard(
-                Keyboard::make()->button('Launch webapp')->webApp('https://tgbot.click/')
+                Keyboard::make()->button('Launch webapp')->webApp('https://tgbot.click/webapp')
             )
             ->send();
     }
