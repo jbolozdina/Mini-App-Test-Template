@@ -3,11 +3,16 @@
 namespace App\Handlers;
 
 use DefStudio\Telegraph\Handlers\WebhookHandler;
+use DefStudio\Telegraph\Keyboard\Keyboard;
 
 class CustomWebhookHandler extends WebhookHandler
 {
-    public function hi()
+    public function start()
     {
-        $this->chat->markdown("*Hi* happy to be here!")->send();
+        $this->chat
+            ->message("Here's your webapp!")
+            ->keyboard(
+                Keyboard::make()->button('Launch webapp')->webApp(getenv('APP_URL'))
+            );
     }
 }
